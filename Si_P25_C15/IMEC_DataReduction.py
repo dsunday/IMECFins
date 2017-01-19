@@ -10,13 +10,13 @@ import CDSAXSfunctions as CD
 import CDplot as CDp
 import matplotlib.pyplot as plt
 
-Intensity=np.loadtxt('Si2_P21_C19_Int.txt')
-Qx = np.loadtxt('Si2_P21_C19_Qx.txt')
-Qz = np.loadtxt('Si2_P21_C19_Qz.txt')
+Intensity=np.loadtxt('Si2_P25_C5_Int.txt')
+Qx = np.loadtxt('Si2_P25_C5_Qx.txt')
+Qz = np.loadtxt('Si2_P25_C5_Qz.txt')
 
-Trapnumber = 3
-Pitch = 83.7
-SampledMatrix=np.load('Si2_P21_C19_Fit1.npy')
+Trapnumber = 2
+Pitch = 99.8
+SampledMatrix=np.load('Si2_P25_C5_Fittest.npy')
 
 #AcceptanceNumber=0;
 #Acceptancetotal=len(SampledMatrix[:,1,1])*len(SampledMatrix[1,:,1])
@@ -62,7 +62,7 @@ def SimInt_IMEC(FITPAR):
     return SimInt
 
 
-TOP=SampledMatrix[0,9,:] # sorts the sampled matrix for the best solutions
+TOP=SampledMatrix[2,9,:] # sorts the sampled matrix for the best solutions
 
 SimInt1=SimInt_IMEC(TOP)
 plt.figure(2)
@@ -79,17 +79,9 @@ OptSLD2=OptSPAR[3]
 (OptCoord,FillT)= CD.IMECCoordAssign(OptTPAR,Trapnumber,OptX1,OptX2,OptFillH,OptSLD2,Pitch)
 plt.figure(1)
 CDp.plotPSPVP(OptCoord,Trapnumber)
-#OF1 = CD.FreeFormTrapezoid(OptCoord[:,:,0],Qx,Qz,Trapnumber)
-#OF2 = CD.FreeFormTrapezoid(OptCoord[:,:,1],Qx,Qz,Trapnumber)
-#OF3 = CD.FreeFormTrapezoid(OptCoord[:,:,2],Qx,Qz,Trapnumber)
-#OF4 = CD.FreeFormTrapezoid(OptCoord[:,:,3],Qx,Qz,Trapnumber)
-#OF5 = CD.FreeFormTrapezoid(OptCoord[:,:,4],Qx,Qz,FillT)
-#OF6 = CD.FreeFormTrapezoid(OptCoord[:,:,5],Qx,Qz,FillT)
-#OF7 = CD.FreeFormTrapezoid(OptCoord[:,:,6],Qx,Qz,FillT)
-#OF8 = CD.FreeFormTrapezoid(OptCoord[:,:,7],Qx,Qz,FillT)    
-#OFormfactor=(OF1+OF2+OF3+OF4+OF5+OF6+OF7+OF8)
-#OM=np.power(np.exp(-1*(np.power(Qx,2)+np.power(Qz,2))*np.power(OptSPAR[0],2)),0.5)
-#OFormfactor=OFormfactor*OM
-#OFormfactor=abs(OFormfactor)
+
+plt.figure(7)
+plt.semilogy(Qz[:,0],Intensity[:,0],'.')
+plt.semilogy(Qz[:,0],SimInt1[:,0])
 
      

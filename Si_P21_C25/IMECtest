@@ -1,7 +1,0 @@
-#!/bin/bash
-#
-#SBATCH --partition=mml
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=24
-#SBATCH -t 2-00:00
-python3.5 PSPVP_6TOptimizationTemplate.py
