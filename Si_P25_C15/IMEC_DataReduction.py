@@ -10,13 +10,13 @@ import CDSAXSfunctions as CD
 import CDplot as CDp
 import matplotlib.pyplot as plt
 
-Intensity=np.loadtxt('Si2_P25_C5_Int.txt')
-Qx = np.loadtxt('Si2_P25_C5_Qx.txt')
-Qz = np.loadtxt('Si2_P25_C5_Qz.txt')
+Intensity=np.loadtxt('Si2_P25_C15_Int.txt')
+Qx = np.loadtxt('Si2_P25_C15_Qx.txt')
+Qz = np.loadtxt('Si2_P25_C15_Qz.txt')
 
 Trapnumber = 2
 Pitch = 99.8
-SampledMatrix=np.load('Si2_P25_C5_Fittest.npy')
+SampledMatrix=np.load('Si2_P25_C15_Fit2_1.npy')
 
 #AcceptanceNumber=0;
 #Acceptancetotal=len(SampledMatrix[:,1,1])*len(SampledMatrix[1,:,1])
@@ -62,7 +62,7 @@ def SimInt_IMEC(FITPAR):
     return SimInt
 
 
-TOP=SampledMatrix[2,9,:] # sorts the sampled matrix for the best solutions
+TOP=SampledMatrix[7,149,:] # sorts the sampled matrix for the best solutions
 
 SimInt1=SimInt_IMEC(TOP)
 plt.figure(2)

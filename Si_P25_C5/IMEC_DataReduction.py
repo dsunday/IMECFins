@@ -14,9 +14,9 @@ Intensity=np.loadtxt('Si2_P25_C5_Int.txt')
 Qx = np.loadtxt('Si2_P25_C5_Qx.txt')
 Qz = np.loadtxt('Si2_P25_C5_Qz.txt')
 
-Trapnumber = 2
+Trapnumber = 3
 Pitch = 99.8
-SampledMatrix=np.load('Si2_P25_C5_Fittest.npy')
+SampledMatrix=np.load('Si2_P25_C5_Fit3_1.npy')
 
 #AcceptanceNumber=0;
 #Acceptancetotal=len(SampledMatrix[:,1,1])*len(SampledMatrix[1,:,1])
@@ -62,11 +62,11 @@ def SimInt_IMEC(FITPAR):
     return SimInt
 
 
-TOP=SampledMatrix[2,9,:] # sorts the sampled matrix for the best solutions
+TOP=SampledMatrix[9,9999,:] # sorts the sampled matrix for the best solutions
 
 SimInt1=SimInt_IMEC(TOP)
 plt.figure(2)
-CDp.PlotQzCut(Qz,SimInt1,Intensity,11)  
+CDp.PlotQzCut(Qz,SimInt1,Intensity,20)  
 ChiPost=np.sum(CD.Misfit(Intensity,SimInt1))
 OptTPAR=np.ones([Trapnumber+1,3])
 T1=np.reshape(TOP[0:(Trapnumber+1)*2],(Trapnumber+1,2))

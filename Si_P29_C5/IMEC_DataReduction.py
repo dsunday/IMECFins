@@ -10,13 +10,13 @@ import CDSAXSfunctions as CD
 import CDplot as CDp
 import matplotlib.pyplot as plt
 
-Intensity=np.loadtxt('Si2_P25_C5_Int.txt')
-Qx = np.loadtxt('Si2_P25_C5_Qx.txt')
-Qz = np.loadtxt('Si2_P25_C5_Qz.txt')
+Intensity=np.loadtxt('Si2_P29_C5_Int.txt')
+Qx = np.loadtxt('Si2_P29_C5_Qx.txt')
+Qz = np.loadtxt('Si2_P29_C5_Qz.txt')
 
-Trapnumber = 2
-Pitch = 99.8
-SampledMatrix=np.load('Si2_P25_C5_Fittest.npy')
+Trapnumber = 3
+Pitch = 115.8
+SampledMatrix=np.load('Si2_P29_C5_Fit3_1.npy')
 
 #AcceptanceNumber=0;
 #Acceptancetotal=len(SampledMatrix[:,1,1])*len(SampledMatrix[1,:,1])
